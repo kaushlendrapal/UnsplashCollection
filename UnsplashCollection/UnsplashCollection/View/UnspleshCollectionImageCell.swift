@@ -23,6 +23,7 @@ class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDel
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     func configureView(with viewModel:UnspleshImageViewModel) -> (Void) {
@@ -36,6 +37,18 @@ class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDel
         let randomValue = randomNumber(inRange: 120...220)
         imageWidthConstraint.constant = CGFloat(randomValue)
         imageHeightConstraint.constant = CGFloat(randomNumber(inRange: 100...200))
+        //UI update
+        self.contentView.layer.borderWidth = 2
+        self.contentView.layer.borderColor = UIColor.niceBlue.cgColor
+        self.contentView.layer.masksToBounds = true
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = CGFloat(randomValue / 2)
+        layer.masksToBounds = true
+        self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:0).cgPath
+        
         viewModel.pendingForDownload = true
         viewModel.startDownloadingImage()
     }
