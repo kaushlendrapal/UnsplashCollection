@@ -9,20 +9,29 @@
 import Foundation
 import UIKit
 
+enum URLTypes : String {
+    case full = "full"
+    case regular = "regular"
+    case small  = "small"
+    case thumb  = "thumb"
+}
+
 class ImageDownloader: AsynchronousOperation {
     
     let currentImage: USImage
     let cacheManager = CacheManager.shared
     var oAuthAccessToken: UnsplashAccessToken
     public let accessKey: String = "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6"
+    let imageURLType: URLTypes
     
     var networkTask: URLSessionDataTask?
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
     
-    init(_ currentPhoto: USImage, accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+    init(_ currentPhoto: USImage, imageURLType:URLTypes, accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
         self.currentImage = currentPhoto
         networkCallCompletionBlock = requestCompletion
         self.oAuthAccessToken = accessToken
+        self.imageURLType = imageURLType
         super.init()
         self.operationName = "ImageDownloader"
     }
@@ -59,10 +68,11 @@ class ImageDownloader: AsynchronousOperation {
                 return
             }
             
-            guard let imageThumbURL =  self.currentImage.urls?.thumb else {
+            guard let imageThumbURL =  self.getImageURLString(for: self.imageURLType, image: self.currentImage) else {
                 self.networkTask?.cancel()
                 return
             }
+            
             self.makeNetworkCall(requestObject: URLRequest(url: URL(string: imageThumbURL)!),
                                  requestCompletionBlock: { (jsonObject, error) in
                                     self.callNetworkCompletionBlock(response: jsonObject, error: error)
@@ -73,7 +83,30 @@ class ImageDownloader: AsynchronousOperation {
                 self.networkTask?.cancel()
             }
         }
+    }
+    
+    func getImageURLString(for urlType:URLTypes, image:USImage) -> (String?) {
+        var urlString:String?
         
+        switch urlType {
+        case .full:
+            if let imageFullURL =  self.currentImage.urls?.thumb {
+                urlString = imageFullURL
+            }
+        case .regular:
+            if let imageRegulerURL =  self.currentImage.urls?.thumb {
+                urlString = imageRegulerURL
+            }
+        case .small:
+            if let imageSmallURL =  self.currentImage.urls?.thumb {
+                urlString = imageSmallURL
+            }
+        case .thumb:
+            if let imageThumbURL =  self.currentImage.urls?.thumb {
+                urlString = imageThumbURL
+            }
+        }
+        return urlString
     }
     
     func makeNetworkCall(requestObject: URLRequest, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) {

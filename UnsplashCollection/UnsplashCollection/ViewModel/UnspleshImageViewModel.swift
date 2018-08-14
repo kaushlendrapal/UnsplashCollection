@@ -32,7 +32,7 @@ class UnspleshImageViewModel: BaseViewModel {
     
     func startDownloadingImage() {
         imageViewModelInputDelegate?.downloading(image: nil, status: .new)
-        let imageDownloadOperation = ImageDownloader(image, accessToken: NetworkManager.sharedManager.unsplashToken!) { (imageData, error) in
+        let imageDownloadOperation = ImageDownloader(image, imageURLType: .thumb, accessToken: NetworkManager.sharedManager.unsplashToken!) { (imageData, error) in
             DispatchQueue.main.async {
                 if error != nil {
                     self.imageViewModelInputDelegate?.downloading(image: nil, status: .failed)

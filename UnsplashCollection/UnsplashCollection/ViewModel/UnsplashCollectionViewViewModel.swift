@@ -15,7 +15,7 @@ protocol UnspleshCollectionVMInputDelegate: class {
 
 
 struct SearchCriteria {
-    var page:Int = Int(5)
+    var page:Int = Int(2)
     var perPage:Int
     var orderBy:String
     var orientation:String
@@ -27,17 +27,17 @@ struct SearchCriteria {
         self.orderBy = orderBy
         self.orientation = orientation
     }
-    
 }
+
 
 class UnsplashCollectionViewViewModel: BaseViewModel {
     var collectionDataSource:[USImage]?
     var networkManager = NetworkManager()
     weak var collectionVMDelegate:UnspleshCollectionVMInputDelegate?
-    var searchCriteria = SearchCriteria(perPage: 20, orderBy: "popular", orientation: "squarish", searchText: "Nature")
+    var searchCriteria = SearchCriteria(perPage: 100, orderBy: "popular", orientation: "squarish", searchText: "Nature")
     
     func fetchAllImages(searchCriteria:SearchCriteria)  {
-        let requestParamaters:[String: Any] = ["page": Int(5), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
+        let requestParamaters:[String: Any] = ["page": Int(2), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
         
         NetworkQueueManager.shared.makeNetworkCall(requestHelper: requestParamaters) { (jsonObject, error) in
             let jsonResult = self.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
