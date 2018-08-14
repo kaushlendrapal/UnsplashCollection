@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Unsplashed Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Unsplashed Demo" id="BYZ-38-t0r" customClass="RootViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="608.79999999999995" y="-237.03148425787109"/>
         </scene>
-        <!--Unsplash Collectionview Controller-->
+        <!--Photo collection-->
         <scene sceneID="8LP-Mg-4sX">
             <objects>
-                <viewController storyboardIdentifier="UnsplashCollectionviewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qqt-w3-rAb" customClass="UnsplashCollectionviewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UnsplashCollectionviewController" title="Photo collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qqt-w3-rAb" customClass="UnsplashCollectionviewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oI2-ML-awQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="-126" y="82"/>
         </scene>
-        <!--Photo Detail View Controller-->
+        <!--Photo Detail-->
         <scene sceneID="jvQ-wY-vP0">
             <objects>
-                <viewController storyboardIdentifier="PhotoDetailViewController" id="8KH-ap-VQi" customClass="PhotoDetailViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoDetailViewController" title="Photo Detail" id="8KH-ap-VQi" customClass="PhotoDetailViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lcz-uD-oqY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="554.39999999999998" y="506.89655172413796"/>
         </scene>
-        <!--Design Display View Controller-->
+        <!--MVVM Design-->
         <scene sceneID="hOX-Zw-am3">
             <objects>
-                <viewController storyboardIdentifier="DesignDisplayViewController" id="xfd-iP-X62" customClass="DesignDisplayViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DesignDisplayViewController" title="MVVM Design" id="xfd-iP-X62" customClass="DesignDisplayViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xWR-2u-DiI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

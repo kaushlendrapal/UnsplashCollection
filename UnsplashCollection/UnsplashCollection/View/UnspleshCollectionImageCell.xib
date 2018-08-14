@@ -54,9 +54,9 @@
             <constraints>
                 <constraint firstItem="gSQ-Al-V31" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4R7-qc-nof"/>
                 <constraint firstAttribute="bottom" secondItem="Ti4-nf-KdA" secondAttribute="bottom" id="6Rq-6L-6uS"/>
-                <constraint firstAttribute="trailing" secondItem="h82-Ct-LF9" secondAttribute="trailing" id="9e4-Ji-PSY"/>
+                <constraint firstAttribute="trailing" secondItem="h82-Ct-LF9" secondAttribute="trailing" priority="755" id="9e4-Ji-PSY"/>
                 <constraint firstItem="Ti4-nf-KdA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MG2-Yp-mFu"/>
-                <constraint firstAttribute="bottom" secondItem="h82-Ct-LF9" secondAttribute="bottom" id="YF6-y6-tgF"/>
+                <constraint firstAttribute="bottom" secondItem="h82-Ct-LF9" secondAttribute="bottom" priority="755" id="YF6-y6-tgF"/>
                 <constraint firstAttribute="trailing" secondItem="Ti4-nf-KdA" secondAttribute="trailing" id="eow-Qg-6Xy"/>
                 <constraint firstItem="Ti4-nf-KdA" firstAttribute="top" secondItem="gSQ-Al-V31" secondAttribute="bottom" constant="5" id="ohN-5N-PoS"/>
                 <constraint firstItem="2d6-5m-WFl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="qhh-5b-JFg"/>
