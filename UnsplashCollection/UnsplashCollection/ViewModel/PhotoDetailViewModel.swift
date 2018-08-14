@@ -12,7 +12,7 @@ protocol PhotoDetailVMInputDelegate: class {
     func downloading(image:Data?, status:ImageDownloadState)
 }
 
-class PhotoDetailViewModel {
+class PhotoDetailViewModel: BaseViewModel {
     
     var image:USImage
     weak var photoDetailVMInputDelegate: PhotoDetailVMInputDelegate?

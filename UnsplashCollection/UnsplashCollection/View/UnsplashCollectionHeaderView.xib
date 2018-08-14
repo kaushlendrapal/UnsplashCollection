@@ -18,19 +18,49 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q60-BA-kKM">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <color key="backgroundColor" red="0.85247573170000002" green="0.60813152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.070588235294117646" green="0.44705882352941173" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="QYb-VH-XiM"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unsplash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vh-GT-a84">
+                    <rect key="frame" x="10" y="17" width="115" height="16.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sigma ITC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iss-gZ-E1n">
+                    <rect key="frame" x="200" y="16.5" width="110" height="17.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="branding" translatesAutoresizingMaskIntoConstraints="NO" id="icE-fQ-ZyG">
+                    <rect key="frame" x="130" y="5" width="60" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="57M-GB-wA8"/>
+                        <constraint firstAttribute="width" constant="60" id="lWt-xw-Qha"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <constraints>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="iss-gZ-E1n" secondAttribute="trailing" constant="10" id="5DZ-vT-SY0"/>
+                <constraint firstItem="iss-gZ-E1n" firstAttribute="leading" secondItem="icE-fQ-ZyG" secondAttribute="trailing" constant="10" id="5mD-NH-Keo"/>
                 <constraint firstItem="Q60-BA-kKM" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="688-IS-nbw"/>
+                <constraint firstItem="8Vh-GT-a84" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="10" id="8Pz-1s-DiS"/>
+                <constraint firstItem="8Vh-GT-a84" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="FNG-S6-p1f"/>
                 <constraint firstItem="Q60-BA-kKM" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="GYW-OE-qWs"/>
+                <constraint firstItem="iss-gZ-E1n" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="KsZ-Rw-Ubu"/>
                 <constraint firstItem="Q60-BA-kKM" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="WsT-WX-VgW"/>
+                <constraint firstItem="icE-fQ-ZyG" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="irI-CB-nat"/>
                 <constraint firstItem="Q60-BA-kKM" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" id="mQi-dV-Oh6"/>
+                <constraint firstItem="icE-fQ-ZyG" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="nYK-Hn-eCe"/>
+                <constraint firstItem="icE-fQ-ZyG" firstAttribute="leading" secondItem="8Vh-GT-a84" secondAttribute="trailing" constant="5" id="u5C-oT-RgA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="branding" width="60" height="40"/>
+    </resources>
 </document>

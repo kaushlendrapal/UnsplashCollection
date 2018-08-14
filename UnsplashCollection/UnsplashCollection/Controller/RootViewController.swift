@@ -9,13 +9,13 @@
 import UIKit
 
 class RootViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,8 +35,13 @@ class RootViewController: UIViewController {
                 print("####     authorigation done    #######")
             }
         }
-        
     }
-
+    
+   @IBAction func designDisplayButtontapped(sander: Any) {
+        
+        let viewModel = DesignDisplayViewModel(images: ["firstFlow", "secondFlow", "ThirdFlow"])
+        let viewController = DesignDisplayViewController.designDisplayViewControllerOnLaunch(with: viewModel)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
-

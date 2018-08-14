@@ -20,11 +20,11 @@ class PhotoDetailViewController: BaseViewController, PhotoDetailVMInputDelegate 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let identifier = "PhotoDetailViewController"
         let photoDetailVC: PhotoDetailViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! PhotoDetailViewController
-        guard let homeViewModel = viewModel as? PhotoDetailViewModel else {
+        guard let photoDetailViewModel = viewModel as? PhotoDetailViewModel else {
             return photoDetailVC
         }
         
-        photoDetailVC.viewModel = homeViewModel
+        photoDetailVC.viewModel = photoDetailViewModel
         photoDetailVC.viewModel.photoDetailVMInputDelegate = photoDetailVC
         
         return photoDetailVC

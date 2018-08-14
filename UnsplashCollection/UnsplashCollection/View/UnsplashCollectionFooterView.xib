@@ -18,9 +18,38 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iin-UJ-hLc">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <color key="backgroundColor" red="0.85247573170000002" green="0.60813152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unsplash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRN-e3-YKH">
+                            <rect key="frame" x="10" y="17.5" width="115" height="16.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sigma ITC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mv-Kc-dKB">
+                            <rect key="frame" x="195" y="17" width="115" height="17.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="branding" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-T3-YZK">
+                            <rect key="frame" x="130" y="5" width="60" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Z1y-l8-9CW"/>
+                                <constraint firstAttribute="width" constant="60" id="c58-5i-1yA"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.070588235289999995" green="0.44705882349999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="FH1-ux-OGb"/>
+                        <constraint firstItem="uRN-e3-YKH" firstAttribute="leading" secondItem="iin-UJ-hLc" secondAttribute="leading" constant="10" id="FdG-1Y-JQg"/>
+                        <constraint firstItem="8mv-Kc-dKB" firstAttribute="centerY" secondItem="iin-UJ-hLc" secondAttribute="centerY" id="G4g-Oz-mej"/>
+                        <constraint firstItem="KD9-T3-YZK" firstAttribute="centerX" secondItem="iin-UJ-hLc" secondAttribute="centerX" id="Pcu-Lu-pCG"/>
+                        <constraint firstAttribute="trailing" secondItem="8mv-Kc-dKB" secondAttribute="trailing" constant="10" id="RlW-xA-CQz"/>
+                        <constraint firstItem="uRN-e3-YKH" firstAttribute="centerY" secondItem="iin-UJ-hLc" secondAttribute="centerY" id="VXG-6N-BYo"/>
+                        <constraint firstItem="KD9-T3-YZK" firstAttribute="leading" secondItem="uRN-e3-YKH" secondAttribute="trailing" constant="5" id="mpR-nz-8N7"/>
+                        <constraint firstItem="8mv-Kc-dKB" firstAttribute="leading" secondItem="KD9-T3-YZK" secondAttribute="trailing" constant="5" id="u85-CV-J6n"/>
+                        <constraint firstItem="KD9-T3-YZK" firstAttribute="centerY" secondItem="iin-UJ-hLc" secondAttribute="centerY" id="xvm-Sn-avf"/>
                     </constraints>
                 </view>
             </subviews>
@@ -33,4 +62,7 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="branding" width="60" height="40"/>
+    </resources>
 </document>
