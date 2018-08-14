@@ -74,7 +74,7 @@ public class UnsplashAuthManager {
         NetworkManager.sharedManager.makeNetworkCall(requestObject: authRequest) { (jsonObject, error) in
             let jsonResult = self.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: UnsplashAccessToken.self)
             switch jsonResult {
-            case JSONResult.failure(let genericError):
+            case JSONResult.failure(_):
                 print("")
                 completion(nil, WebServiceError.APIError(400, "") )
             case JSONResult.success(let token):
@@ -139,6 +139,9 @@ public class UnsplashAuthManager {
     }
     
     public func getAccessToken() -> UnsplashAccessToken? {
+        if (self.unsplashToken == nil) {
+            return UnsplashAccessToken(appId: "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6", accessToken: nil, refreshToken: nil)
+        }
         return self.unsplashToken
     }
     

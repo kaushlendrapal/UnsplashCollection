@@ -13,14 +13,32 @@ protocol UnspleshCollectionVMInputDelegate: class {
     func handleCollectionViewReloadOnDataSourceUpdate()
 }
 
+
+struct SearchCriteria {
+    var page:Int = Int(5)
+    var perPage:Int
+    var orderBy:String
+    var orientation:String
+    var searchText:String = "india"
+    
+    
+    init(perPage:Int, orderBy:String, orientation:String, searchText:String) {
+        self.perPage = perPage
+        self.orderBy = orderBy
+        self.orientation = orientation
+    }
+    
+}
+
 class UnsplashCollectionViewViewModel: BaseViewModel {
     var collectionDataSource:[USImage]?
     var networkManager = NetworkManager()
     weak var collectionVMDelegate:UnspleshCollectionVMInputDelegate?
+    var searchCriteria = SearchCriteria(perPage: 20, orderBy: "popular", orientation: "squarish", searchText: "Nature")
     
-    
-    func fetchAllImages()  {
-        let requestParamaters:[String: Any] = ["page": Int(1), "per_page": Int(20), "order_by": "popular", "orientation": "squarish", "query": "india"]
+    func fetchAllImages(searchCriteria:SearchCriteria)  {
+        let requestParamaters:[String: Any] = ["page": Int(5), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
+        
         NetworkQueueManager.shared.makeNetworkCall(requestHelper: requestParamaters) { (jsonObject, error) in
             let jsonResult = self.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
             switch jsonResult {
@@ -30,7 +48,7 @@ class UnsplashCollectionViewViewModel: BaseViewModel {
             case JSONResult.success(let images):
                 self.collectionDataSource = images
                 self.collectionVMDelegate?.handleCollectionViewReloadOnDataSourceUpdate()
-            case JSONResult.successWithResult(let resultInfo):
+            case JSONResult.successWithResult( _):
                 print("")
             default:
                 print("")
@@ -52,7 +70,7 @@ class UnsplashCollectionViewViewModel: BaseViewModel {
         return dataSource.count
     }
     
-    func getImage(at indexPath:IndexPath) -> USImage? {
+    func getImageModel(at indexPath:IndexPath) -> USImage? {
         guard let dataSource = collectionDataSource, indexPath.row < dataSource.count else {
             return nil
         }

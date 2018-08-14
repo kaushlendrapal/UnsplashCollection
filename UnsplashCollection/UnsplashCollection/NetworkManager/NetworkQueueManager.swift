@@ -8,24 +8,6 @@
 
 import Foundation
 
-
-class PendingOperations {
-    lazy var downloadsInProgress: [IndexPath: Operation] = [:]
-    lazy var downloadQueue: OperationQueue = {
-        var queue = OperationQueue()
-        queue.name = "Download queue"
-        return queue
-    }()
-    
-    lazy var filtrationsInProgress: [IndexPath: Operation] = [:]
-    lazy var filtrationQueue: OperationQueue = {
-        var queue = OperationQueue()
-        queue.name = "Image Filtration queue"
-        return queue
-    }()
-}
-
-
 class NetworkQueueManager: NSObject {
     
     static let shared = NetworkQueueManager()
@@ -38,6 +20,7 @@ class NetworkQueueManager: NSObject {
         self.networkQueue.maxConcurrentOperationCount = 5
     }
     
+    @discardableResult
     func makeNetworkCall (requestHelper: [String: Any], requestCompletion:@escaping((Any?, Error?) -> Void)) -> NetworkOperation? {
         
         self.checkAndRemoveCancelledOperations()

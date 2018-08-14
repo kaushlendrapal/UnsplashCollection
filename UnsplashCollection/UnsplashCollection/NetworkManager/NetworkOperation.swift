@@ -110,7 +110,7 @@ class NetworkOperation: AsynchronousOperation {
                         requestCompletionBlock(resultJSONData, nil)
                         
                     default:
-                        guard let JSONObject = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
+                        guard (try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject]) != nil else {
                             print("error trying to convert data to JSON")
                             requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
                             return

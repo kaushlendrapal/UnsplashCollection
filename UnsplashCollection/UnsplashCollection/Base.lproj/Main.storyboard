@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,35 +19,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Bz-LE1">
-                                <rect key="frame" x="131.5" y="318.5" width="112" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XK2-W7-biT">
+                                <rect key="frame" x="0.0" y="265" width="375" height="201"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Bz-LE1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <color key="backgroundColor" red="0.77368108889999998" green="0.92063152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Go To Unsplash Collection">
+                                            <color key="titleColor" name="waterBlue"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToUnsplashCollectionVCButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJO-UU-8VT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="FH4-Cf-FE4"/>
-                                    <constraint firstAttribute="width" constant="112" id="Nrc-tu-4bn"/>
+                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="top" secondItem="XK2-W7-biT" secondAttribute="top" id="7CJ-8b-ob4"/>
+                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="leading" secondItem="XK2-W7-biT" secondAttribute="leading" id="Gy9-tk-9pW"/>
+                                    <constraint firstAttribute="trailing" secondItem="e44-Bz-LE1" secondAttribute="trailing" id="Nln-qe-neG"/>
+                                    <constraint firstAttribute="bottom" secondItem="e44-Bz-LE1" secondAttribute="bottom" id="SeG-1n-fep"/>
                                 </constraints>
-                                <state key="normal" title="GoToUnsplash"/>
-                                <connections>
-                                    <action selector="goToUnsplashCollectionVCButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJO-UU-8VT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDQ-Je-x8V">
-                                <rect key="frame" x="148.5" y="125" width="78" height="30"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pX1-QM-LZ2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="201"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDQ-Je-x8V">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Unsplash Authentication">
+                                            <color key="titleColor" name="waterBlue"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="oAuthRegistrationButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4Y-PD-c4X"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="78" id="F3d-ag-bD0"/>
-                                    <constraint firstAttribute="height" constant="30" id="wvV-JF-5Mz"/>
+                                    <constraint firstAttribute="bottom" secondItem="JDQ-Je-x8V" secondAttribute="bottom" id="1Vi-w2-wCb"/>
+                                    <constraint firstAttribute="trailing" secondItem="JDQ-Je-x8V" secondAttribute="trailing" id="GgI-9B-Cl0"/>
+                                    <constraint firstItem="JDQ-Je-x8V" firstAttribute="leading" secondItem="pX1-QM-LZ2" secondAttribute="leading" id="cTk-KL-tzk"/>
+                                    <constraint firstItem="JDQ-Je-x8V" firstAttribute="top" secondItem="pX1-QM-LZ2" secondAttribute="top" id="dmD-4W-MPF"/>
                                 </constraints>
-                                <state key="normal" title="oAuthLogin"/>
-                                <connections>
-                                    <action selector="oAuthRegistrationButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4Y-PD-c4X"/>
-                                </connections>
-                            </button>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnS-gx-8IL">
+                                <rect key="frame" x="0.0" y="466" width="375" height="201"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yj-3q-Mj3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <color key="backgroundColor" red="0.85247573170000002" green="0.60813152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="application design (work inprogress)">
+                                            <color key="titleColor" name="waterBlue"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9yj-3q-Mj3" secondAttribute="bottom" id="0Un-b2-TD7"/>
+                                    <constraint firstAttribute="trailing" secondItem="9yj-3q-Mj3" secondAttribute="trailing" id="L9o-dH-wrf"/>
+                                    <constraint firstItem="9yj-3q-Mj3" firstAttribute="top" secondItem="nnS-gx-8IL" secondAttribute="top" id="Xeo-Pt-aOV"/>
+                                    <constraint firstItem="9yj-3q-Mj3" firstAttribute="leading" secondItem="nnS-gx-8IL" secondAttribute="leading" id="suw-Ed-rvS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JDQ-Je-x8V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DS4-fT-u3i"/>
-                            <constraint firstItem="e44-Bz-LE1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXK-xG-48b"/>
-                            <constraint firstItem="JDQ-Je-x8V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="61" id="HPC-fd-GPK"/>
-                            <constraint firstItem="e44-Bz-LE1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xxm-mV-nmA"/>
+                            <constraint firstItem="pX1-QM-LZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Ad-aW-3eE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nnS-gx-8IL" secondAttribute="bottom" id="AAb-M9-OM0"/>
+                            <constraint firstItem="pX1-QM-LZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ELz-5D-kV2"/>
+                            <constraint firstItem="XK2-W7-biT" firstAttribute="top" secondItem="pX1-QM-LZ2" secondAttribute="bottom" id="MF1-cY-bB3"/>
+                            <constraint firstItem="XK2-W7-biT" firstAttribute="height" secondItem="pX1-QM-LZ2" secondAttribute="height" id="Nrv-st-FlU"/>
+                            <constraint firstItem="XK2-W7-biT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OCE-2I-X0P"/>
+                            <constraint firstItem="nnS-gx-8IL" firstAttribute="top" secondItem="XK2-W7-biT" secondAttribute="bottom" id="OlC-wt-IdT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XK2-W7-biT" secondAttribute="trailing" id="PnV-GT-jvF"/>
+                            <constraint firstItem="nnS-gx-8IL" firstAttribute="height" secondItem="pX1-QM-LZ2" secondAttribute="height" id="dbO-Ap-vTI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pX1-QM-LZ2" secondAttribute="trailing" id="jv0-oa-ifl"/>
+                            <constraint firstItem="nnS-gx-8IL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uXP-VA-CRe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nnS-gx-8IL" secondAttribute="trailing" id="vof-dA-Vgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -54,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+            <point key="canvasLocation" x="608.79999999999995" y="-237.03148425787109"/>
         </scene>
         <!--Unsplash Collectionview Controller-->
         <scene sceneID="8LP-Mg-4sX">
@@ -74,7 +127,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ze7-Sj-DvX">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnspleshCollectionImageCell" id="ze7-Sj-DvX">
                                         <rect key="frame" x="0.0" y="50" width="160" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -83,11 +136,11 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="No0-PE-S7G">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="UnsplashCollectionHeaderView" id="No0-PE-S7G">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n04-h3-KMO">
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="UnsplashCollectionFooterView" id="n04-h3-KMO">
                                     <rect key="frame" x="0.0" y="170" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
@@ -108,6 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30b-Bz-AVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1274" y="-237"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sPu-nh-kgo">
@@ -125,7 +179,62 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiP-gf-Ick" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-126" y="82"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="jvQ-wY-vP0">
+            <objects>
+                <viewController storyboardIdentifier="PhotoDetailViewController" id="8KH-ap-VQi" customClass="PhotoDetailViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lcz-uD-oqY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="q9c-TS-ZoL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain over Lago di Toblino, Italian Alps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAT-Pd-dBz">
+                                <rect key="frame" x="0.0" y="640" width="375" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R6a-FM-KHh">
+                                <rect key="frame" x="177.5" y="324" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="P3S-Lf-Sjl"/>
+                                    <constraint firstAttribute="height" constant="20" id="UIh-eL-vY5"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R6a-FM-KHh" firstAttribute="centerY" secondItem="lcz-uD-oqY" secondAttribute="centerY" id="9zO-le-84d"/>
+                            <constraint firstItem="q9c-TS-ZoL" firstAttribute="leading" secondItem="eAd-4S-2bb" secondAttribute="leading" id="A8c-Ls-8Pl"/>
+                            <constraint firstItem="eAd-4S-2bb" firstAttribute="bottom" secondItem="YAT-Pd-dBz" secondAttribute="bottom" constant="10" id="C1E-Mq-kMu"/>
+                            <constraint firstItem="eAd-4S-2bb" firstAttribute="bottom" secondItem="q9c-TS-ZoL" secondAttribute="bottom" id="Ulj-7X-NA6"/>
+                            <constraint firstItem="R6a-FM-KHh" firstAttribute="centerX" secondItem="lcz-uD-oqY" secondAttribute="centerX" id="YxU-Fx-i8J"/>
+                            <constraint firstItem="YAT-Pd-dBz" firstAttribute="leading" secondItem="eAd-4S-2bb" secondAttribute="leading" id="cM1-Lk-j07"/>
+                            <constraint firstItem="eAd-4S-2bb" firstAttribute="trailing" secondItem="q9c-TS-ZoL" secondAttribute="trailing" id="nXS-xK-B8N"/>
+                            <constraint firstItem="q9c-TS-ZoL" firstAttribute="top" secondItem="eAd-4S-2bb" secondAttribute="top" id="q0T-BD-EDi"/>
+                            <constraint firstItem="eAd-4S-2bb" firstAttribute="trailing" secondItem="YAT-Pd-dBz" secondAttribute="trailing" id="q7L-8a-7dR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eAd-4S-2bb"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="R6a-FM-KHh" id="5KW-Xc-fBS"/>
+                        <outlet property="photoImageView" destination="q9c-TS-ZoL" id="q4B-wg-Xfs"/>
+                        <outlet property="photoInfo" destination="YAT-Pd-dBz" id="AVF-fy-Z0t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMZ-E7-KMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="554.39999999999998" y="506.89655172413796"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photoPlaceholder" width="2000" height="3000"/>
+        <namedColor name="waterBlue">
+            <color red="0.090000003580000001" green="0.57300001379999999" blue="0.89800000189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

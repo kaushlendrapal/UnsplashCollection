@@ -27,11 +27,19 @@ public struct UnsplashAccessToken : Codable {
     public init(from decoder: Decoder) throws {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.appId = try values.decodeIfPresent(String.self, forKey: .appId)
-        self.accessToken = try values.decodeIfPresent(String.self, forKey: .accessToken)
-        self.refreshToken = try values.decodeIfPresent(String.self, forKey: .refreshToken)
-        self.tokenType = "bearer"
-        self.appId = "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6"
+        let appId = try values.decodeIfPresent(String.self, forKey: .appId)
+        let accessToken = try values.decodeIfPresent(String.self, forKey: .accessToken)
+        let refreshToken = try values.decodeIfPresent(String.self, forKey: .refreshToken)
+        let tokenType = "bearer"
+        self.init(appId:appId, accessToken: accessToken, refreshToken: refreshToken, tokenType: tokenType)
     }
+    
+    public init(appId: String?, accessToken: String?,refreshToken: String?, tokenType: String = "bearer" ) {
+        self.appId = appId ?? "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6"
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.tokenType = tokenType
+    }
+    
     
 }

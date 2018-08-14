@@ -24,7 +24,7 @@ struct ImageRequestBuilder : RequestHelper {
     init() {
     }
     
-    mutating func photoURLRequest(withQuery query:String, accessToken: UnsplashAccessToken) {
+    mutating func photoURLRequest(with url:String, query:String, accessToken: UnsplashAccessToken) {
         guard var components = URLComponents(string: String(baseURL)) else { return }
         components.queryItems = [URLQueryItem(name: "query", value: query)]
         guard let url = components.url else { return }

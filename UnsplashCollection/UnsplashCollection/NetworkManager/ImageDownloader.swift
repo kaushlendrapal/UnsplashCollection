@@ -11,7 +11,7 @@ import UIKit
 
 class ImageDownloader: AsynchronousOperation {
     
-    let currentImage: USPhotoDownload
+    let currentImage: USImage
     let cacheManager = CacheManager.shared
     var oAuthAccessToken: UnsplashAccessToken
     public let accessKey: String = "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6"
@@ -19,7 +19,7 @@ class ImageDownloader: AsynchronousOperation {
     var networkTask: URLSessionDataTask?
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
     
-    init(_ currentPhoto: USPhotoDownload, accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+    init(_ currentPhoto: USImage, accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
         self.currentImage = currentPhoto
         networkCallCompletionBlock = requestCompletion
         self.oAuthAccessToken = accessToken
@@ -58,10 +58,12 @@ class ImageDownloader: AsynchronousOperation {
                 self.operationCompleted()
                 return
             }
-            var imageRequest = ImageRequestBuilder()
-            imageRequest.photoURLRequest(withQuery: "", accessToken:self.oAuthAccessToken)
             
-            self.makeNetworkCall(requestObject: imageRequest.requestURL,
+            guard let imageThumbURL =  self.currentImage.urls?.thumb else {
+                self.networkTask?.cancel()
+                return
+            }
+            self.makeNetworkCall(requestObject: URLRequest(url: URL(string: imageThumbURL)!),
                                  requestCompletionBlock: { (jsonObject, error) in
                                     self.callNetworkCompletionBlock(response: jsonObject, error: error)
             })
@@ -87,10 +89,11 @@ class ImageDownloader: AsynchronousOperation {
                 if let responseData = data,
                     let response = response {
                     let cachedResponse = CachedURLResponse(response: response, data: responseData)
-                    strongSelf.cacheManager.updateCache(cachedResponse: cachedResponse, for: strongSelf.currentImage.url)
+                    strongSelf.cacheManager.updateCache(cachedResponse: cachedResponse, for: requestObject.url!)
                     requestCompletionBlock(responseData, nil)
                 }
             }
+            self.networkTask?.resume()
         }
         
     }

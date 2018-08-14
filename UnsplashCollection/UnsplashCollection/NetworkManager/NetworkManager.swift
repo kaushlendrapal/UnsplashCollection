@@ -40,9 +40,9 @@ class NetworkManager  {
                         requestCompletionBlock(JSONObject, nil)
                         
                     default:
-                        guard let JSONObject = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject]  else {
+                        guard (try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject]) != nil  else {
                             print("error trying to convert data to JSON")
-                            requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
+                            requestCompletionBlock(nil, WebServiceError.parserError(220, "response json invalid"))
                             return
                         }
                         print("POST resquest not successful. http status code \(httpResponse.statusCode)")
@@ -73,7 +73,7 @@ class NetworkManager  {
         UnsplashAuthManager.sharedAuthManager.authorizeFromController(controller: controller, completion: { token, error in
             if let accessToken = token {
                 self.unsplashToken = accessToken
-                print("######   \(accessToken.accessToken)          ####")
+                print("######   \(String(describing: accessToken.accessToken))          ####")
                 completion(true, nil)
             } else  {
                 completion(false, error!)
