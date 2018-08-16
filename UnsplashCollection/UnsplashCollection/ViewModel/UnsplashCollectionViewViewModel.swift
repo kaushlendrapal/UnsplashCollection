@@ -30,7 +30,7 @@ struct SearchCriteria {
 }
 
 
-class UnsplashCollectionViewViewModel: BaseViewModel {
+class UnsplashCollectionViewViewModel {
     var collectionDataSource:[USImage]?
     var networkManager = NetworkManager()
     weak var collectionVMDelegate:UnspleshCollectionVMInputDelegate?
@@ -40,7 +40,7 @@ class UnsplashCollectionViewViewModel: BaseViewModel {
         let requestParamaters:[String: Any] = ["page": Int(2), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
         
         NetworkQueueManager.shared.makeNetworkCall(requestHelper: requestParamaters) { (jsonObject, error) in
-            let jsonResult = self.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
+            let jsonResult = JSONResponseSerializer.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
             switch jsonResult {
             case JSONResult.failure(let genericError):
                 print("")

@@ -12,7 +12,7 @@ protocol UnspleshImageVMInputDelegate: class {
     func downloading(image:Data?, status:ImageDownloadState)
 }
 
-class UnspleshImageViewModel: BaseViewModel {
+class UnspleshImageViewModel {
     
     var image:USImage
     weak var imageViewModelInputDelegate: UnspleshImageVMInputDelegate?
@@ -27,7 +27,6 @@ class UnspleshImageViewModel: BaseViewModel {
     init(unsplashedImage:USImage) {
         self.image = unsplashedImage
         self.pendingForDownload = true
-        super.init()
     }
     
     func startDownloadingImage() {
