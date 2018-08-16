@@ -37,11 +37,5 @@ class RootViewController: UIViewController {
         }
     }
     
-   @IBAction func designDisplayButtontapped(sander: Any) {
-        
-        let viewModel = DesignDisplayViewModel(images: ["firstFlow", "secondFlow", "ThirdFlow"])
-        let viewController = DesignDisplayViewController.designDisplayViewControllerOnLaunch(with: viewModel)
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
     
 }

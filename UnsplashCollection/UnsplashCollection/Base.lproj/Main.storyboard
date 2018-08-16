@@ -19,34 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XK2-W7-biT">
-                                <rect key="frame" x="0.0" y="265" width="375" height="201"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Bz-LE1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
-                                        <color key="backgroundColor" red="0.77368108889999998" green="0.92063152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Go To Unsplash Collection">
-                                            <color key="titleColor" name="waterBlue"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goToUnsplashCollectionVCButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJO-UU-8VT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="top" secondItem="XK2-W7-biT" secondAttribute="top" id="7CJ-8b-ob4"/>
-                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="leading" secondItem="XK2-W7-biT" secondAttribute="leading" id="Gy9-tk-9pW"/>
-                                    <constraint firstAttribute="trailing" secondItem="e44-Bz-LE1" secondAttribute="trailing" id="Nln-qe-neG"/>
-                                    <constraint firstAttribute="bottom" secondItem="e44-Bz-LE1" secondAttribute="bottom" id="SeG-1n-fep"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pX1-QM-LZ2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="201"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="301.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDQ-Je-x8V">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Unsplash Authentication">
@@ -65,44 +42,40 @@
                                     <constraint firstItem="JDQ-Je-x8V" firstAttribute="top" secondItem="pX1-QM-LZ2" secondAttribute="top" id="dmD-4W-MPF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnS-gx-8IL">
-                                <rect key="frame" x="0.0" y="466" width="375" height="201"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XK2-W7-biT">
+                                <rect key="frame" x="0.0" y="365.5" width="375" height="301.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yj-3q-Mj3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
-                                        <color key="backgroundColor" red="0.85247573170000002" green="0.60813152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Bz-LE1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <color key="backgroundColor" red="0.77368108889999998" green="0.92063152790000002" blue="0.94577074049999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="application design (work inprogress)">
+                                        <state key="normal" title="Go To Unsplash Collection">
                                             <color key="titleColor" name="waterBlue"/>
                                         </state>
                                         <connections>
-                                            <action selector="designDisplayButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b21-Rp-KFw"/>
+                                            <action selector="goToUnsplashCollectionVCButtontappedWithSander:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJO-UU-8VT"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="9yj-3q-Mj3" secondAttribute="bottom" id="0Un-b2-TD7"/>
-                                    <constraint firstAttribute="trailing" secondItem="9yj-3q-Mj3" secondAttribute="trailing" id="L9o-dH-wrf"/>
-                                    <constraint firstItem="9yj-3q-Mj3" firstAttribute="top" secondItem="nnS-gx-8IL" secondAttribute="top" id="Xeo-Pt-aOV"/>
-                                    <constraint firstItem="9yj-3q-Mj3" firstAttribute="leading" secondItem="nnS-gx-8IL" secondAttribute="leading" id="suw-Ed-rvS"/>
+                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="top" secondItem="XK2-W7-biT" secondAttribute="top" id="7CJ-8b-ob4"/>
+                                    <constraint firstItem="e44-Bz-LE1" firstAttribute="leading" secondItem="XK2-W7-biT" secondAttribute="leading" id="Gy9-tk-9pW"/>
+                                    <constraint firstAttribute="trailing" secondItem="e44-Bz-LE1" secondAttribute="trailing" id="Nln-qe-neG"/>
+                                    <constraint firstAttribute="bottom" secondItem="e44-Bz-LE1" secondAttribute="bottom" id="SeG-1n-fep"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pX1-QM-LZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Ad-aW-3eE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nnS-gx-8IL" secondAttribute="bottom" id="AAb-M9-OM0"/>
-                            <constraint firstItem="pX1-QM-LZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ELz-5D-kV2"/>
                             <constraint firstItem="XK2-W7-biT" firstAttribute="top" secondItem="pX1-QM-LZ2" secondAttribute="bottom" id="MF1-cY-bB3"/>
                             <constraint firstItem="XK2-W7-biT" firstAttribute="height" secondItem="pX1-QM-LZ2" secondAttribute="height" id="Nrv-st-FlU"/>
                             <constraint firstItem="XK2-W7-biT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OCE-2I-X0P"/>
-                            <constraint firstItem="nnS-gx-8IL" firstAttribute="top" secondItem="XK2-W7-biT" secondAttribute="bottom" id="OlC-wt-IdT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XK2-W7-biT" secondAttribute="trailing" id="PnV-GT-jvF"/>
-                            <constraint firstItem="nnS-gx-8IL" firstAttribute="height" secondItem="pX1-QM-LZ2" secondAttribute="height" id="dbO-Ap-vTI"/>
+                            <constraint firstItem="pX1-QM-LZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SWA-Ho-xzD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XK2-W7-biT" secondAttribute="bottom" id="Whr-Zr-q5l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pX1-QM-LZ2" secondAttribute="trailing" id="jv0-oa-ifl"/>
-                            <constraint firstItem="nnS-gx-8IL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uXP-VA-CRe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nnS-gx-8IL" secondAttribute="trailing" id="vof-dA-Vgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -233,70 +206,8 @@
             </objects>
             <point key="canvasLocation" x="554.39999999999998" y="506.89655172413796"/>
         </scene>
-        <!--MVVM Design-->
-        <scene sceneID="hOX-Zw-am3">
-            <objects>
-                <viewController storyboardIdentifier="DesignDisplayViewController" title="MVVM Design" id="xfd-iP-X62" customClass="DesignDisplayViewController" customModule="UnsplashCollection" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xWR-2u-DiI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GDk-2M-PhT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6v9-XL-8Xq">
-                                <rect key="frame" x="285" y="318.5" width="80" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Yxl-oc-CwY"/>
-                                    <constraint firstAttribute="height" constant="30" id="krB-Tw-3bj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="next">
-                                    <color key="titleColor" name="waterBlue"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonTappedWithSander:" destination="xfd-iP-X62" eventType="touchUpInside" id="Ce2-fC-Ruw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-dj-arY">
-                                <rect key="frame" x="10" y="318.5" width="80" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Nrw-Is-K2j"/>
-                                    <constraint firstAttribute="width" constant="80" id="Rcf-Nf-2mW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Previous">
-                                    <color key="titleColor" name="waterBlue"/>
-                                </state>
-                                <connections>
-                                    <action selector="previousButtonTappedWithSander:" destination="xfd-iP-X62" eventType="touchUpInside" id="p8L-rw-HRL"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="GDk-2M-PhT" firstAttribute="leading" secondItem="DB0-yv-Oop" secondAttribute="leading" id="1sb-AE-Oe8"/>
-                            <constraint firstItem="DB0-yv-Oop" firstAttribute="bottom" secondItem="GDk-2M-PhT" secondAttribute="bottom" id="BMD-Jf-ood"/>
-                            <constraint firstItem="DB0-yv-Oop" firstAttribute="trailing" secondItem="GDk-2M-PhT" secondAttribute="trailing" id="S21-j9-3hQ"/>
-                            <constraint firstItem="DB0-yv-Oop" firstAttribute="trailing" secondItem="6v9-XL-8Xq" secondAttribute="trailing" constant="10" id="XCL-cr-kCC"/>
-                            <constraint firstItem="6v9-XL-8Xq" firstAttribute="centerY" secondItem="xWR-2u-DiI" secondAttribute="centerY" id="Z8C-ZQ-WFj"/>
-                            <constraint firstItem="cHf-dj-arY" firstAttribute="centerY" secondItem="xWR-2u-DiI" secondAttribute="centerY" id="mRq-XU-XrX"/>
-                            <constraint firstItem="cHf-dj-arY" firstAttribute="leading" secondItem="DB0-yv-Oop" secondAttribute="leading" constant="10" id="srJ-nV-pKU"/>
-                            <constraint firstItem="GDk-2M-PhT" firstAttribute="top" secondItem="DB0-yv-Oop" secondAttribute="top" id="x4k-uN-cOH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DB0-yv-Oop"/>
-                    </view>
-                    <connections>
-                        <outlet property="photoImageView" destination="GDk-2M-PhT" id="AS8-QL-ASX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cAX-x2-UKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1356" y="499.70014992503752"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="Placeholder" width="48" height="48"/>
         <image name="photoPlaceholder" width="2000" height="3000"/>
         <namedColor name="waterBlue">
             <color red="0.090000003580000001" green="0.57300001379999999" blue="0.89800000189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
