@@ -11,7 +11,6 @@ import UIKit
 protocol UnspleshImageCellOutputDelegate: class { }
 
 class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDelegate {
-    let cellPadding = 20
     
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -34,9 +33,8 @@ class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDel
         self.imageLabel.text = viewModel.image.description
         self.activityIndicator.startAnimating()
         self.activityIndicator.isHidden = false
-        let randomValue = randomNumber(inRange: 120...220)
-        imageWidthConstraint.constant = CGFloat(randomValue)
-        imageHeightConstraint.constant = CGFloat(randomNumber(inRange: 100...200))
+        imageWidthConstraint.constant = CGFloat(Device.screenWidth / 2)
+        imageHeightConstraint.constant = CGFloat(320)
         //UI update
         self.contentView.layer.borderWidth = 2
         self.contentView.layer.borderColor = UIColor.niceBlue.cgColor
@@ -45,7 +43,7 @@ class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDel
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = CGFloat(randomValue / 2)
+        self.layer.shadowRadius = CGFloat(200)
         layer.masksToBounds = true
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:0).cgPath
         
