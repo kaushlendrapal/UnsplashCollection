@@ -54,8 +54,8 @@ class UnsplashCollectionviewController: BaseViewController, UICollectionViewDele
         collectionView.delegate = self
         collectionView.dataSource = self
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: 160, height: 120)
-//            flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            flowLayout.estimatedItemSize = CGSize(width: 180, height: 370)
+            flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         }
     }
 

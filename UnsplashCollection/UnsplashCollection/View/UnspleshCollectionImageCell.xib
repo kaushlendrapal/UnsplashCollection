@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +51,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="waterBlue"/>
             <constraints>
                 <constraint firstItem="gSQ-Al-V31" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4R7-qc-nof"/>
                 <constraint firstAttribute="bottom" secondItem="Ti4-nf-KdA" secondAttribute="bottom" id="6Rq-6L-6uS"/>
@@ -79,5 +80,8 @@
     </objects>
     <resources>
         <image name="Placeholder" width="48" height="48"/>
+        <namedColor name="waterBlue">
+            <color red="0.090000003580000001" green="0.57300001379999999" blue="0.89800000189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

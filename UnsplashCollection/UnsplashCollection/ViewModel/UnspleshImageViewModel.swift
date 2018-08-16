@@ -22,7 +22,6 @@ class UnspleshImageViewModel {
         queue.name = "Download queue"
         return queue
     }()
-    
 
     init(unsplashedImage:USImage) {
         self.image = unsplashedImage

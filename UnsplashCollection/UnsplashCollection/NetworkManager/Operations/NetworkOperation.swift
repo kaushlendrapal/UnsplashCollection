@@ -9,7 +9,7 @@
 import Foundation
 
 class NetworkOperation: AsynchronousOperation {
-    var requestParams: [String: Any]
+    var requestHelper: RequestHelper
     var oAuthAccessToken: UnsplashAccessToken
     let cacheManager = CacheManager.shared
     var requestURL:URL?
@@ -18,8 +18,8 @@ class NetworkOperation: AsynchronousOperation {
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
     
     
-    init(_ requestParams: [String: Any] , accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
-        self.requestParams = requestParams
+    init(_ requestHealper: RequestHelper , accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+        self.requestHelper = requestHealper
         self.oAuthAccessToken = accessToken
         self.networkCallCompletionBlock = requestCompletion
         super.init()
@@ -62,11 +62,9 @@ class NetworkOperation: AsynchronousOperation {
                 self.operationCompleted()
                 return
             }
-            var imageSearchRequest = ImageSearchRequestBuilder()
-            imageSearchRequest.photoListRequest(withQuery: self.requestParams, accessToken:self.oAuthAccessToken)
             //used for cache key
-            self.requestURL = imageSearchRequest.requestURL.url!
-            self.makeNetworkCall(requestObject: imageSearchRequest.requestURL,
+            self.requestURL = self.requestHelper.requestURL.url!
+            self.makeNetworkCall(requestObject: self.requestHelper.requestURL,
                                  requestCompletionBlock: { (jsonObject, error) in
                                     self.callNetworkCompletionBlock(response: jsonObject, error: error)
             })

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+enum ImageDownloadState {
+    case new, downloaded, failed
+}
+
 enum URLTypes : String {
     case full = "full"
     case regular = "regular"
@@ -21,7 +25,6 @@ class ImageDownloader: AsynchronousOperation {
     let currentImage: USImage
     let cacheManager = CacheManager.shared
     var oAuthAccessToken: UnsplashAccessToken
-    public let accessKey: String = "8ef42698e366832076e1ab8e822fe441141239a022dda4f1d8c07c83547d6ac6"
     let imageURLType: URLTypes
     
     var networkTask: URLSessionDataTask?
@@ -62,7 +65,7 @@ class ImageDownloader: AsynchronousOperation {
         }
         
         DispatchQueue.global(qos: .background).async {
-            NSLog("\(String(describing: self.operationName)) startNetworkCall Method Started")
+            print("\(String(describing: self.operationName)) startNetworkCall Method Started")
             if self.isCancelled {
                 self.operationCompleted()
                 return
@@ -79,39 +82,15 @@ class ImageDownloader: AsynchronousOperation {
             })
             if self.networkTask?.state == .running,
                 self.networkTask?.state == .suspended {
-                NSLog("\(String(describing: self.operationName)) startNetworkCall method. cancel running  operation")
+                print("\(String(describing: self.operationName)) startNetworkCall method. cancel running  operation")
                 self.networkTask?.cancel()
             }
         }
     }
     
-    func getImageURLString(for urlType:URLTypes, image:USImage) -> (String?) {
-        var urlString:String?
-        
-        switch urlType {
-        case .full:
-            if let imageFullURL =  self.currentImage.urls?.thumb {
-                urlString = imageFullURL
-            }
-        case .regular:
-            if let imageRegulerURL =  self.currentImage.urls?.thumb {
-                urlString = imageRegulerURL
-            }
-        case .small:
-            if let imageSmallURL =  self.currentImage.urls?.thumb {
-                urlString = imageSmallURL
-            }
-        case .thumb:
-            if let imageThumbURL =  self.currentImage.urls?.thumb {
-                urlString = imageThumbURL
-            }
-        }
-        return urlString
-    }
-    
     func makeNetworkCall(requestObject: URLRequest, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
-            NSLog("\(String(describing: self.operationName)) makeNetworkCall method")
+            print("\(String(describing: self.operationName)) makeNetworkCall method")
             self.networkTask =  URLSession.shared.dataTask(with: requestObject.url!) { [weak self] (data, response, error) in
                 guard let strongSelf = self else { return }
                 strongSelf.networkTask = nil
@@ -135,7 +114,7 @@ class ImageDownloader: AsynchronousOperation {
         if let errorObj = error {
             print(errorObj.localizedDescription)
         }  else {
-            NSLog("\(String(describing: self.operationName)) Operation completed")
+            print("\(String(describing: self.operationName)) Operation completed")
             if !self.isCancelled {
                 self.networkCallCompletionBlock(response, error)
             }
@@ -144,21 +123,45 @@ class ImageDownloader: AsynchronousOperation {
     }
     
     func changeOperationExecutingState(isExecuting: Bool) {
-        NSLog("\(String(describing: self.operationName)) changeOperationExecutingState method")
         if isExecuting {
             self.state = .executing
-            NSLog("\(String(describing: self.operationName)) isExecuting Method")
         } else {
             self.state = .finished
-            NSLog("\(String(describing: self.operationName)) isFinished Method")
+            print("\(String(describing: self.operationName)) isFinished Method")
         }
     }
     
     func operationCompleted() {
-        NSLog("\(String(describing: self.operationName)) operationCompleted method")
+        print("\(String(describing: self.operationName)) operationCompleted method")
         changeOperationExecutingState(isExecuting: false)
     }
     
+}
+
+fileprivate extension ImageDownloader {
+    func getImageURLString(for urlType:URLTypes, image:USImage) -> (String?) {
+        var urlString:String?
+        
+        switch urlType {
+        case .full:
+            if let imageFullURL =  self.currentImage.urls?.thumb {
+                urlString = imageFullURL
+            }
+        case .regular:
+            if let imageRegulerURL =  self.currentImage.urls?.thumb {
+                urlString = imageRegulerURL
+            }
+        case .small:
+            if let imageSmallURL =  self.currentImage.urls?.thumb {
+                urlString = imageSmallURL
+            }
+        case .thumb:
+            if let imageThumbURL =  self.currentImage.urls?.thumb {
+                urlString = imageThumbURL
+            }
+        }
+        return urlString
+    }
 }
 
 

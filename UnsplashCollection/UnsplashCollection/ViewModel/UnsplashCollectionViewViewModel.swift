@@ -38,8 +38,10 @@ class UnsplashCollectionViewViewModel {
     
     func fetchAllImages(searchCriteria:SearchCriteria)  {
         let requestParamaters:[String: Any] = ["page": Int(2), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
-        
-        NetworkQueueManager.shared.makeNetworkCall(requestHelper: requestParamaters) { (jsonObject, error) in
+        var imageSearchRequest = ImageSearchRequestBuilder(accessToken: NetworkManager.sharedManager.unsplashToken)
+        imageSearchRequest.photoListRequest(withQuery: requestParamaters)
+
+        NetworkQueueManager.shared.makeNetworkCall(requestHelper: imageSearchRequest) { (jsonObject, error) in
             let jsonResult = JSONResponseSerializer.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
             switch jsonResult {
             case JSONResult.failure(let genericError):

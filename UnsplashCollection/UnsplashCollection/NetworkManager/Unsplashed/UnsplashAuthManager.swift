@@ -63,15 +63,11 @@ public class UnsplashAuthManager {
             completion(nil, e)
             return
         }
-        var authRequest = URLRequest(url: accessTokenURL(code: code!))
-        authRequest.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        authRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        authRequest.httpMethod = "POST"
-        authRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        
+        var authRequestHealper = OAuthRequestBuilder(accessToken: nil, requestType: .post)
         let requestParams = accessTokenURL(code: code!).queryPairs
-        authRequest.httpBody = try? JSONSerialization.data(withJSONObject: requestParams, options: [])
-
-        NetworkManager.sharedManager.makeNetworkCall(requestObject: authRequest) { (jsonObject, error) in
+        authRequestHealper.buildAuthorizationRequest(withQuery: requestParams)
+        NetworkManager.sharedManager.makeNetworkCall(requestHelper: authRequestHealper) { (jsonObject, error) in
             let jsonResult = self.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: UnsplashAccessToken.self)
             switch jsonResult {
             case JSONResult.failure(_):

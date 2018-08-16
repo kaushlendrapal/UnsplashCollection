@@ -8,50 +8,51 @@
 
 import Foundation
 
-//MARK: get image request
+enum RequestType: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+}
 
-struct ImageRequestBuilder : RequestHelper {
-    var requestURL: URLRequest!
-    var requestBody: Any?
-    var requestHeader: [String : String]?
-    
-    var requestType: RequestType?
-    
-    var baseURL: String {
-        return "https://api.unsplash.com/photos"
-    }
-    
-    init() {
-    }
-    
-    mutating func photoURLRequest(with url:String, query:String, accessToken: UnsplashAccessToken) {
-        guard var components = URLComponents(string: String(baseURL)) else { return }
-        components.queryItems = [URLQueryItem(name: "query", value: query)]
-        guard let url = components.url else { return }
-        var request = URLRequest(url: url)
-        request.addValue("Client-ID \(accessToken.appId!)", forHTTPHeaderField: "Authorization")
-        self.requestURL = request
-        self.requestType = .get
-    }
+protocol RequestHelper {
+    var baseURL: String { get }
+    var requestURL: URLRequest! { get }
+    var requestBody: Any? { get }
+    var requestHeader: [String: String] { get }
+    var requestType: RequestType { get }
+    var accessToken: UnsplashAccessToken? { get }
     
 }
 
 //MARK: image Search request
 
-struct ImageSearchRequestBuilder : RequestHelper {
+struct ImageSearchRequestBuilder: RequestHelper {
     var requestURL: URLRequest!
+    var requestType: RequestType
+    var accessToken: UnsplashAccessToken?
     var requestBody: Any?
-    var requestHeader: [String : String]?
+    var requestHeader: [String : String] = ["Accept": "application/json", "Content-Type": "application/json"]
     var baseURL: String {
         return "https://api.unsplash.com/search/photos"
     }
-    var requestType: RequestType?
     
-    init() {
-        
+    init(accessToken: UnsplashAccessToken?, requestType:RequestType = .get) {
+        self.requestType = requestType
+        var request = URLRequest(url: URL(string: baseURL)!)
+        if let appId = accessToken?.appId {
+            request.addValue("Client-ID \(appId)", forHTTPHeaderField: "Authorization")
+        }
+        for (key, headerValue) in requestHeader {
+            request.addValue(headerValue, forHTTPHeaderField: key)
+        }
+        request.httpMethod = requestType.rawValue
+        request.cachePolicy = .useProtocolCachePolicy
+        self.requestURL = request
     }
     
-    mutating func photoListRequest(withQuery query:[String: Any], accessToken: UnsplashAccessToken) {
+    
+    mutating func photoListRequest(withQuery query:[String: Any]) {
         guard var components = URLComponents(string: String(baseURL)) else { return }
         var queryItems: [URLQueryItem] = []
         for (key, value) in query {
@@ -65,28 +66,24 @@ struct ImageSearchRequestBuilder : RequestHelper {
         }
         components.queryItems = queryItems
         guard let url = components.url else { return }
-        var request = URLRequest(url: url)
-        request.addValue("Client-ID \(accessToken.appId!)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"
-        request.cachePolicy = .reloadIgnoringLocalCacheData
-        self.requestURL = request
-        self.requestType = .get
+        self.requestURL.url = url
     }
     
 }
 
+
 //MARK: oAuthentication Request builder
 
-struct ImageOAuthRequestBuilder : RequestHelper {
+struct OAuthRequestBuilder: RequestHelper {
+    var requestType: RequestType
+    var accessToken: UnsplashAccessToken?
+    
     var requestURL: URLRequest!
     var requestBody: Any?
-    var requestHeader: [String : String]?
+    var requestHeader: [String : String] = ["Accept": "application/json", "Content-Type": "application/json"]
     var baseURL: String {
-        return "https://unsplash.com/oauth/authorize"
+        return "https://unsplash.com/oauth/token"
     }
-    var requestType: RequestType?
     public static let publicScope = ["public"]
     public static let allScopes = [
         "public",
@@ -102,26 +99,25 @@ struct ImageOAuthRequestBuilder : RequestHelper {
     private let appId : String = ""
     private let secret : String = ""
     
-    init() {
+    init(accessToken: UnsplashAccessToken? = nil, requestType:RequestType = .post) {
+        self.requestType = requestType
+        var request = URLRequest(url: URL(string: baseURL)!)
+        if let appId = accessToken?.appId {
+            request.addValue("Client-ID \(appId)", forHTTPHeaderField: "Authorization")
+        }
+        for (key, headerValue) in requestHeader {
+            request.addValue(headerValue, forHTTPHeaderField: key)
+        }
+        request.httpMethod = requestType.rawValue
+        request.cachePolicy = .useProtocolCachePolicy
+        self.requestURL = request
     }
     
-    mutating func buildAuthorizationRequest(withQuery query:[String: Any], consumerToken: String) {
-        guard var components = URLComponents(string: String(baseURL)) else { return }
-        components.queryItems = [
-            URLQueryItem(name: "grant_type", value: "authorization_code"),
-            URLQueryItem(name: "client_id", value: ""),
-            URLQueryItem(name: "client_secret", value: ""),
-            URLQueryItem(name: "scope", value: ImageOAuthRequestBuilder.allScopes.joined(separator: "+")),
-        ]
-        guard let url = components.url else { return }
-        var request = URLRequest(url: url)
-        request.addValue("Client-ID \(consumerToken)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "POST"
-        request.cachePolicy = .reloadIgnoringLocalCacheData
-        self.requestURL = request
-        self.requestType = .get
+    mutating func buildAuthorizationRequest(withQuery requestParams:[String: String]) {
+        if self.requestType == .post {
+            self.requestURL.httpBody = try? JSONSerialization.data(withJSONObject: requestParams, options: [])
+        }
+//        self.requestURL.addValue("Client-ID \(consumerToken)", forHTTPHeaderField: "Authorization")
     }
     
 }

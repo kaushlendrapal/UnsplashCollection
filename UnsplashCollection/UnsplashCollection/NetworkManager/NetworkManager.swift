@@ -17,10 +17,10 @@ class NetworkManager  {
     var unsplashToken:UnsplashAccessToken?
     
     //MARK: Refresh token API
-    func makeNetworkCall(requestObject: URLRequest, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) {
+    func makeNetworkCall(requestHelper: RequestHelper, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             let session = URLSession(configuration: URLSessionConfiguration.default)
-            self.networkTask =  session.dataTask(with: requestObject) { [weak self] (data, response, error) in
+            self.networkTask =  session.dataTask(with: requestHelper.requestURL) { [weak self] (data, response, error) in
                 guard let strongSelf = self else { return }
                 strongSelf.networkTask = nil
                 if let error = error {

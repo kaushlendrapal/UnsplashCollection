@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D49A3EB211DD0E20012D1D6 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A3EA211DD0E20012D1D6 /* RequestHelper.swift */; };
 		2D49A3ED211DD64B0012D1D6 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A3EC211DD64B0012D1D6 /* CacheManager.swift */; };
 		2D49A3EF211DDA350012D1D6 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A3EE211DDA350012D1D6 /* RequestBuilder.swift */; };
 		2D49A3F1211DF9360012D1D6 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D49A3F0211DF9360012D1D6 /* ImageDownloader.swift */; };
@@ -30,7 +29,6 @@
 		2D9E530B211F243D0073A48E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E5307211F243D0073A48E /* User.swift */; };
 		2D9E530E211F254B0073A48E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E530C211F254A0073A48E /* ProfileImage.swift */; };
 		2D9E530F211F254B0073A48E /* PhotoTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E530D211F254A0073A48E /* PhotoTags.swift */; };
-		2D9E5311211F26AB0073A48E /* USPhotoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E5310211F26AB0073A48E /* USPhotoDownload.swift */; };
 		2D9E5313211F4A170073A48E /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E5312211F4A170073A48E /* AsynchronousOperation.swift */; };
 		2D9E5315211FED8C0073A48E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E5314211FED8C0073A48E /* NetworkManager.swift */; };
 		2D9E53182120281D0073A48E /* UnsplashAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E53172120281D0073A48E /* UnsplashAuthManager.swift */; };
@@ -42,8 +40,6 @@
 		2DB9FF57211D6AE60075746F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB9FF56211D6AE60075746F /* Assets.xcassets */; };
 		2DB9FF5A211D6AE60075746F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB9FF58211D6AE60075746F /* LaunchScreen.storyboard */; };
 		2DB9FF65211D6AE60075746F /* UnsplashCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9FF64211D6AE60075746F /* UnsplashCollectionTests.swift */; };
-		2DB9FF71211D6CFB0075746F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9FF6F211D6CFA0075746F /* UIColor+Additions.swift */; };
-		2DB9FF72211D6CFB0075746F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9FF70211D6CFB0075746F /* UIFont+Additions.swift */; };
 		2DB9FF7B211D70480075746F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9FF7A211D70480075746F /* Image.swift */; };
 		2DB9FF7F211D7B020075746F /* NetworkQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9FF7E211D7B020075746F /* NetworkQueueManager.swift */; };
 		2DF9C4FB212272EA00F360CC /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF9C4FA212272EA00F360CC /* PhotoDetailViewController.swift */; };
@@ -61,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D49A3EA211DD0E20012D1D6 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
 		2D49A3EC211DD64B0012D1D6 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		2D49A3EE211DDA350012D1D6 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		2D49A3F0211DF9360012D1D6 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
@@ -84,7 +79,6 @@
 		2D9E5307211F243D0073A48E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D9E530C211F254A0073A48E /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		2D9E530D211F254A0073A48E /* PhotoTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTags.swift; sourceTree = "<group>"; };
-		2D9E5310211F26AB0073A48E /* USPhotoDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USPhotoDownload.swift; sourceTree = "<group>"; };
 		2D9E5312211F4A170073A48E /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		2D9E5314211FED8C0073A48E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2D9E53172120281D0073A48E /* UnsplashAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashAuthManager.swift; sourceTree = "<group>"; };
@@ -100,8 +94,6 @@
 		2DB9FF60211D6AE60075746F /* UnsplashCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplashCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB9FF64211D6AE60075746F /* UnsplashCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashCollectionTests.swift; sourceTree = "<group>"; };
 		2DB9FF66211D6AE60075746F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DB9FF6F211D6CFA0075746F /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
-		2DB9FF70211D6CFB0075746F /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		2DB9FF7A211D70480075746F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2DB9FF7E211D7B020075746F /* NetworkQueueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueueManager.swift; sourceTree = "<group>"; };
 		2DF9C4FA212272EA00F360CC /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
@@ -179,12 +171,12 @@
 		2DB9FF4E211D6AE40075746F /* UnsplashCollection */ = {
 			isa = PBXGroup;
 			children = (
+				2DE4568B2125ECFC0044DA5C /* Shared */,
 				2DB9FF74211D6E080075746F /* NetworkManager */,
 				2DB9FF75211D6E180075746F /* Model */,
 				2D49A3FA211E02930012D1D6 /* View */,
 				2DB9FF77211D6F200075746F /* ViewModel */,
 				2DB9FF76211D6F100075746F /* Controller */,
-				2DB9FF73211D6D100075746F /* StyleGuide */,
 				2DB9FF4F211D6AE40075746F /* AppDelegate.swift */,
 				2DB9FF53211D6AE40075746F /* Main.storyboard */,
 				2DB9FF56211D6AE60075746F /* Assets.xcassets */,
@@ -203,29 +195,15 @@
 			path = UnsplashCollectionTests;
 			sourceTree = "<group>";
 		};
-		2DB9FF73211D6D100075746F /* StyleGuide */ = {
-			isa = PBXGroup;
-			children = (
-				2DB9FF6F211D6CFA0075746F /* UIColor+Additions.swift */,
-				2DB9FF70211D6CFB0075746F /* UIFont+Additions.swift */,
-			);
-			name = StyleGuide;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		2DB9FF74211D6E080075746F /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
 				2D9E5316212027EA0073A48E /* Unsplashed */,
+				2DE4568A2125ECC70044DA5C /* Operations */,
 				2D9E5314211FED8C0073A48E /* NetworkManager.swift */,
 				2DB9FF7E211D7B020075746F /* NetworkQueueManager.swift */,
 				2D49A3EC211DD64B0012D1D6 /* CacheManager.swift */,
-				2D49A3EA211DD0E20012D1D6 /* RequestHelper.swift */,
 				2D49A3EE211DDA350012D1D6 /* RequestBuilder.swift */,
-				2D9E5312211F4A170073A48E /* AsynchronousOperation.swift */,
-				2D49A3F2211DFC600012D1D6 /* NetworkOperation.swift */,
-				2D49A3F0211DF9360012D1D6 /* ImageDownloader.swift */,
-				2D49A40B211E2D710012D1D6 /* Utility.swift */,
 				2D9E5300211EDC000073A48E /* ResponseSerializer.swift */,
 			);
 			path = NetworkManager;
@@ -241,7 +219,6 @@
 				2D9E5306211F243D0073A48E /* Urls.swift */,
 				2D9E5307211F243D0073A48E /* User.swift */,
 				2DB9FF7A211D70480075746F /* Image.swift */,
-				2D9E5310211F26AB0073A48E /* USPhotoDownload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +242,24 @@
 				2DF9C4FC2122733400F360CC /* PhotoDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2DE4568A2125ECC70044DA5C /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				2D9E5312211F4A170073A48E /* AsynchronousOperation.swift */,
+				2D49A3F2211DFC600012D1D6 /* NetworkOperation.swift */,
+				2D49A3F0211DF9360012D1D6 /* ImageDownloader.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		2DE4568B2125ECFC0044DA5C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2D49A40B211E2D710012D1D6 /* Utility.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D49A3F9211E00450012D1D6 /* BaseViewController.swift in Sources */,
-				2DB9FF72211D6CFB0075746F /* UIFont+Additions.swift in Sources */,
 				2D9E530F211F254B0073A48E /* PhotoTags.swift in Sources */,
 				2D9E5308211F243D0073A48E /* Tags.swift in Sources */,
 				2D9E530E211F254B0073A48E /* ProfileImage.swift in Sources */,
@@ -381,7 +375,6 @@
 				2DB9FF7B211D70480075746F /* Image.swift in Sources */,
 				2DB9FF52211D6AE40075746F /* RootViewController.swift in Sources */,
 				2D49A3EF211DDA350012D1D6 /* RequestBuilder.swift in Sources */,
-				2D9E5311211F26AB0073A48E /* USPhotoDownload.swift in Sources */,
 				2D49A408211E05CA0012D1D6 /* UnspleshImageViewModel.swift in Sources */,
 				2D9E5315211FED8C0073A48E /* NetworkManager.swift in Sources */,
 				2D49A40C211E2D710012D1D6 /* Utility.swift in Sources */,
@@ -395,11 +388,9 @@
 				2DB9FF50211D6AE40075746F /* AppDelegate.swift in Sources */,
 				2D9E531D2120B2570073A48E /* UnsplashAccessToken.swift in Sources */,
 				2D49A3F7211DFE9F0012D1D6 /* UnsplashCollectionviewController.swift in Sources */,
-				2D49A3EB211DD0E20012D1D6 /* RequestHelper.swift in Sources */,
 				2D49A3ED211DD64B0012D1D6 /* CacheManager.swift in Sources */,
 				2D9E5301211EDC000073A48E /* ResponseSerializer.swift in Sources */,
 				2DF9C4FB212272EA00F360CC /* PhotoDetailViewController.swift in Sources */,
-				2DB9FF71211D6CFB0075746F /* UIColor+Additions.swift in Sources */,
 				2DB9FF7F211D7B020075746F /* NetworkQueueManager.swift in Sources */,
 				2D49A3F1211DF9360012D1D6 /* ImageDownloader.swift in Sources */,
 				2D9E53182120281D0073A48E /* UnsplashAuthManager.swift in Sources */,
