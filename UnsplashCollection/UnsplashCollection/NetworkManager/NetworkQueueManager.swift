@@ -16,20 +16,26 @@ class NetworkQueueManager: NSObject {
         return NetworkManager.sharedManager.unsplashToken
     }
     
+    lazy var downloadQueue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "Download queue"
+        return queue
+    }()
+    
     override init() {
         self.networkQueue.maxConcurrentOperationCount = 5
     }
     
     @discardableResult
-    func makeNetworkCall (requestHelper: RequestHelper, requestCompletion:@escaping((Any?, Error?) -> Void)) -> NetworkOperation? {
+    func makeNetworkCall (requestHelper: RequestHelper, authRequired:Bool, requestCompletion:@escaping((Any?, Error?) -> Void)) -> NetworkOperation? {
         
         self.checkAndRemoveCancelledOperations()
-        guard let unspleadToken = self.accessToken else {
+        if (self.accessToken == nil) && authRequired == true  {
             self.cancelAllNetworkOperation()
             return nil
         }
         
-        let networkOperation = NetworkOperation(requestHelper, accessToken: unspleadToken, requestCompletion: { (response, error) in
+        let networkOperation = NetworkOperation(requestHelper, requestCompletion: { (response, error) in
             requestCompletion(response, error)
         })
         networkOperation.name = String("NetworkOperation")
@@ -64,6 +70,26 @@ class NetworkQueueManager: NSObject {
 }
 
 
+extension NetworkQueueManager {
+    
+    @discardableResult
+    func downloadImage( with requestHelper: RequestHelper, authRequired:Bool, requestCompletion:@escaping((Any?, Error?) -> Void)) -> ImageDownloader? {
+        
+        if (self.accessToken == nil) && authRequired == true  {
+            self.cancelAllNetworkOperation()
+            return nil
+        }
+        
+        let imageDownloadOperation = ImageDownloader(requestHelper, imageURLType: .thumb) { (imageData, error) in
+            requestCompletion(imageData, error)
+        }
+        imageDownloadOperation.name = String("ImageDownloader")
+        downloadQueue.addOperation(imageDownloadOperation)
+        
+        return imageDownloadOperation
+    }
+        
+}
 
 
 

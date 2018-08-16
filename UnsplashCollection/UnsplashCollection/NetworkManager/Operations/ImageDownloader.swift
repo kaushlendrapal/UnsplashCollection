@@ -22,18 +22,16 @@ enum URLTypes : String {
 
 class ImageDownloader: AsynchronousOperation {
     
-    let currentImage: USImage
+    let requestHelper: RequestHelper
     let cacheManager = CacheManager.shared
-    var oAuthAccessToken: UnsplashAccessToken
     let imageURLType: URLTypes
     
     var networkTask: URLSessionDataTask?
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
     
-    init(_ currentPhoto: USImage, imageURLType:URLTypes, accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
-        self.currentImage = currentPhoto
+    init(_ requestHelper: RequestHelper, imageURLType:URLTypes, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+        self.requestHelper = requestHelper
         networkCallCompletionBlock = requestCompletion
-        self.oAuthAccessToken = accessToken
         self.imageURLType = imageURLType
         super.init()
         self.operationName = "ImageDownloader"
@@ -71,12 +69,9 @@ class ImageDownloader: AsynchronousOperation {
                 return
             }
             
-            guard let imageThumbURL =  self.getImageURLString(for: self.imageURLType, image: self.currentImage) else {
-                self.networkTask?.cancel()
-                return
-            }
             
-            self.makeNetworkCall(requestObject: URLRequest(url: URL(string: imageThumbURL)!),
+            
+            self.makeNetworkCall(requestObject: self.requestHelper.requestURL,
                                  requestCompletionBlock: { (jsonObject, error) in
                                     self.callNetworkCompletionBlock(response: jsonObject, error: error)
             })
@@ -138,31 +133,6 @@ class ImageDownloader: AsynchronousOperation {
     
 }
 
-fileprivate extension ImageDownloader {
-    func getImageURLString(for urlType:URLTypes, image:USImage) -> (String?) {
-        var urlString:String?
-        
-        switch urlType {
-        case .full:
-            if let imageFullURL =  self.currentImage.urls?.thumb {
-                urlString = imageFullURL
-            }
-        case .regular:
-            if let imageRegulerURL =  self.currentImage.urls?.thumb {
-                urlString = imageRegulerURL
-            }
-        case .small:
-            if let imageSmallURL =  self.currentImage.urls?.thumb {
-                urlString = imageSmallURL
-            }
-        case .thumb:
-            if let imageThumbURL =  self.currentImage.urls?.thumb {
-                urlString = imageThumbURL
-            }
-        }
-        return urlString
-    }
-}
 
 
 

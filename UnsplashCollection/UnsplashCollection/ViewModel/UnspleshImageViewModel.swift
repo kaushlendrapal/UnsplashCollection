@@ -17,11 +17,6 @@ class UnspleshImageViewModel {
     var image:USImage
     weak var imageViewModelInputDelegate: UnspleshImageVMInputDelegate?
     var pendingForDownload = true
-    lazy var downloadQueue: OperationQueue = {
-        var queue = OperationQueue()
-        queue.name = "Download queue"
-        return queue
-    }()
 
     init(unsplashedImage:USImage) {
         self.image = unsplashedImage
@@ -29,8 +24,11 @@ class UnspleshImageViewModel {
     }
     
     func startDownloadingImage() {
+        
         imageViewModelInputDelegate?.downloading(image: nil, status: .new)
-        let imageDownloadOperation = ImageDownloader(image, imageURLType: .thumb, accessToken: NetworkManager.sharedManager.unsplashToken!) { (imageData, error) in
+        var imageRequest = ImageRequestBuilder(accessToken: nil)
+        imageRequest.photoURLRequest(for: self.image, imageURLType: .thumb)
+        NetworkQueueManager.shared.downloadImage(with: imageRequest, authRequired: false) { (imageData, error) in
             DispatchQueue.main.async {
                 if error != nil {
                     self.imageViewModelInputDelegate?.downloading(image: nil, status: .failed)
@@ -39,8 +37,6 @@ class UnspleshImageViewModel {
                 }
             }
         }
-        imageDownloadOperation.name = String("ImageDownloader")
-        downloadQueue.addOperation(imageDownloadOperation)
     }
     
 }

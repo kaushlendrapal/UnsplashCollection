@@ -25,6 +25,62 @@ protocol RequestHelper {
     
 }
 
+//MARK: get image request
+
+struct ImageRequestBuilder : RequestHelper {
+    var requestURL: URLRequest!
+    var requestBody: Any?
+    var requestHeader: [String : String] = ["Accept": "application/json", "Content-Type": "application/json"]
+    var accessToken: UnsplashAccessToken?
+    var requestType: RequestType
+    var baseURL: String {
+        return "https://api.unsplash.com/photos"
+    }
+    
+    init(accessToken: UnsplashAccessToken?, requestType:RequestType = .get) {
+        self.requestType = requestType
+        var request = URLRequest(url: URL(string: baseURL)!)
+        if let appId = accessToken?.appId {
+            request.addValue("Client-ID \(appId)", forHTTPHeaderField: "Authorization")
+        }
+        for (key, headerValue) in requestHeader {
+            request.addValue(headerValue, forHTTPHeaderField: key)
+        }
+        request.httpMethod = requestType.rawValue
+        request.cachePolicy = .useProtocolCachePolicy
+        self.requestURL = request
+    }
+    
+    mutating func photoURLRequest(for image:USImage, imageURLType:URLTypes) {
+        var imageURL = URL(string: self.getImageURLString(for: imageURLType, image: image)!)
+        self.requestURL.url = imageURL
+    }
+    
+    func getImageURLString(for urlType:URLTypes, image:USImage) -> (String?) {
+        var urlString:String?
+        switch urlType {
+        case .full:
+            if let imageFullURL =  image.urls?.thumb {
+                urlString = imageFullURL
+            }
+        case .regular:
+            if let imageRegulerURL =  image.urls?.thumb {
+                urlString = imageRegulerURL
+            }
+        case .small:
+            if let imageSmallURL =  image.urls?.thumb {
+                urlString = imageSmallURL
+            }
+        case .thumb:
+            if let imageThumbURL =  image.urls?.thumb {
+                urlString = imageThumbURL
+            }
+        }
+        return urlString
+    }
+}
+
+
 //MARK: image Search request
 
 struct ImageSearchRequestBuilder: RequestHelper {

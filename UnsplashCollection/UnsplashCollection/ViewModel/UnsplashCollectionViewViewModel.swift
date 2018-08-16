@@ -41,7 +41,7 @@ class UnsplashCollectionViewViewModel {
         var imageSearchRequest = ImageSearchRequestBuilder(accessToken: NetworkManager.sharedManager.unsplashToken)
         imageSearchRequest.photoListRequest(withQuery: requestParamaters)
 
-        NetworkQueueManager.shared.makeNetworkCall(requestHelper: imageSearchRequest) { (jsonObject, error) in
+        NetworkQueueManager.shared.makeNetworkCall(requestHelper: imageSearchRequest, authRequired: false) { (jsonObject, error) in
             let jsonResult = JSONResponseSerializer.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
             switch jsonResult {
             case JSONResult.failure(let genericError):

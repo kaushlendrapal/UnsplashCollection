@@ -10,7 +10,6 @@ import Foundation
 
 class NetworkOperation: AsynchronousOperation {
     var requestHelper: RequestHelper
-    var oAuthAccessToken: UnsplashAccessToken
     let cacheManager = CacheManager.shared
     var requestURL:URL?
     
@@ -18,9 +17,8 @@ class NetworkOperation: AsynchronousOperation {
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
     
     
-    init(_ requestHealper: RequestHelper , accessToken: UnsplashAccessToken, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+    init(_ requestHealper: RequestHelper, requestCompletion:@escaping((Any?, Error?) -> Void)) {
         self.requestHelper = requestHealper
-        self.oAuthAccessToken = accessToken
         self.networkCallCompletionBlock = requestCompletion
         super.init()
         self.operationName = "NetworkOperation"
@@ -144,13 +142,11 @@ class NetworkOperation: AsynchronousOperation {
     }
     
     func changeOperationExecutingState(isExecuting: Bool) {
-        NSLog("\(String(describing: self.operationName)) changeOperationExecutingState method")
         if isExecuting {
             self.state = .executing
-            NSLog("\(String(describing: self.operationName)) isExecuting Method")
         } else {
             self.state = .finished
-            NSLog("\(String(describing: self.operationName)) isFinished Method")
+            print("\(String(describing: self.operationName)) isFinished Method")
         }
     }
     
