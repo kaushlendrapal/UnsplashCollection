@@ -20,6 +20,7 @@ class PhotoDetailViewController: BaseViewController, PhotoDetailVMInputDelegate 
     @IBOutlet weak var photoInfo: UILabel!
     var lastScale = CGFloat(0.0)
     
+    /// Factory class method to initialise View controller object with viewModel dependency injection
     class func photoDetailViewControllerOnLaunch(with viewModel:Any) -> (PhotoDetailViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let identifier = "PhotoDetailViewController"

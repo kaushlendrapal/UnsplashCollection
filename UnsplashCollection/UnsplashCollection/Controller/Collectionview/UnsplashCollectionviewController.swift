@@ -25,6 +25,7 @@ class UnsplashCollectionviewController: BaseViewController, UICollectionViewDele
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel:UnsplashCollectionViewViewModel!
     
+    /// Factory class method to initialise View controller object with viewModel dependency injection
     class func unsplashCollectionViewControllerOnLaunch(with viewModel:Any) -> (UnsplashCollectionviewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let identifier = "UnsplashCollectionviewController"
