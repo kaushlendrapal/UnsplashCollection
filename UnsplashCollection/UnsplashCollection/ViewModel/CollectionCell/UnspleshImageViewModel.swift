@@ -8,9 +8,23 @@
 
 import Foundation
 
+/// provide the status of image download operation through delegate
+enum ImageDownloadState {
+    case new, downloaded, failed
+}
+
+/******************************************************************************
+ * UnspleshImageVMInputDelegate: delegate to communicate the status for image source to delegatee
+ ******************************************************************************/
 protocol UnspleshImageVMInputDelegate: class {
     func downloading(image:Data?, status:ImageDownloadState)
 }
+
+
+/******************************************************************************
+ * PhotoDetailViewModel: view model to provide image data to image detail view controller.
+ * hold the single responsibility to provide default image with download status.
+ ******************************************************************************/
 
 class UnspleshImageViewModel {
     

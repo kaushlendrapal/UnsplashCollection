@@ -8,6 +8,10 @@
 
 import UIKit
 
+/******************************************************************************
+ * PhotoDetailViewController: class used to show large image with detail description
+ ******************************************************************************/
+
 class PhotoDetailViewController: BaseViewController, PhotoDetailVMInputDelegate {
     
     var viewModel:PhotoDetailViewModel!

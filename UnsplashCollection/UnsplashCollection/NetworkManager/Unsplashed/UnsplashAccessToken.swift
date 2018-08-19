@@ -8,7 +8,9 @@
 
 import Foundation
 
-
+/******************************************************************************
+ * UnsplashAccessToken: Hold token require for authentication
+ ******************************************************************************/
 public struct UnsplashAccessToken : Codable {
     
     var appId: String?

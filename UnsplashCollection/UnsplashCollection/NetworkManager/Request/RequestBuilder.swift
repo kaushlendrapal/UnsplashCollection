@@ -15,6 +15,11 @@ enum RequestType: String {
     case delete = "DELETE"
 }
 
+/******************************************************************************
+ * RequestHelper: protocol confirm by each request builder class, As all network operation requires
+ * only RequestHelper type dependency.
+ ******************************************************************************/
+
 protocol RequestHelper {
     var baseURL: String { get }
     var requestURL: URLRequest! { get }
@@ -26,6 +31,10 @@ protocol RequestHelper {
 }
 
 //MARK: get image request
+
+/******************************************************************************
+* ImageRequestBuilder: build and provide request for single image
+******************************************************************************/
 
 struct ImageRequestBuilder : RequestHelper {
     var requestURL: URLRequest!
@@ -83,6 +92,10 @@ struct ImageRequestBuilder : RequestHelper {
 
 //MARK: image Search request
 
+/******************************************************************************
+* ImageSearchRequestBuilder: build and provide request for images search with criteria provided
+******************************************************************************/
+
 struct ImageSearchRequestBuilder: RequestHelper {
     var requestURL: URLRequest!
     var requestType: RequestType
@@ -130,6 +143,10 @@ struct ImageSearchRequestBuilder: RequestHelper {
 
 //MARK: oAuthentication Request builder
 
+/******************************************************************************
+* OAuthRequestBuilder: build and provide request for oAuthentication
+******************************************************************************/
+
 struct OAuthRequestBuilder: RequestHelper {
     var requestType: RequestType
     var accessToken: UnsplashAccessToken?
@@ -173,7 +190,6 @@ struct OAuthRequestBuilder: RequestHelper {
         if self.requestType == .post {
             self.requestURL.httpBody = try? JSONSerialization.data(withJSONObject: requestParams, options: [])
         }
-//        self.requestURL.addValue("Client-ID \(consumerToken)", forHTTPHeaderField: "Authorization")
     }
     
 }

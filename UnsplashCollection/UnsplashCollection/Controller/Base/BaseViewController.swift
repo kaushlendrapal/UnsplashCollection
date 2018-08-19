@@ -8,6 +8,11 @@
 
 import UIKit
 
+/******************************************************************************
+ * BaseViewController: base controller for all custom controller will hold the comman reusable
+ * functionality
+ ******************************************************************************/
+
 class BaseViewController: UIViewController {
 
     override func viewDidLoad() {

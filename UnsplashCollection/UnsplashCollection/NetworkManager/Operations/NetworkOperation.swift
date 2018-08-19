@@ -8,6 +8,11 @@
 
 import Foundation
 
+/******************************************************************************
+* NetworkOperation: Async operation for handling all data task request. This class will
+* encapsulate all the lower lavel detail of network call.
+******************************************************************************/
+
 class NetworkOperation: AsynchronousOperation {
     var requestHelper: RequestHelper
     let cacheManager = CacheManager.shared

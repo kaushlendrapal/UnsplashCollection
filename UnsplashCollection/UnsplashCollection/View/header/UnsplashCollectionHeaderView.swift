@@ -8,6 +8,10 @@
 
 import UIKit
 
+/******************************************************************************
+ * UnsplashCollectionHeaderView: collection view reusable header
+ ******************************************************************************/
+
 class UnsplashCollectionHeaderView: UICollectionReusableView {
 
     override func awakeFromNib() {

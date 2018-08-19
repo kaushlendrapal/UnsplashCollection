@@ -8,6 +8,9 @@
 
 import Foundation
 
+/******************************************************************************
+ * JSONResponseSerializer: Utility methods for handling generic response data.
+ ******************************************************************************/
 
 struct JSONResponseSerializer {
    
@@ -25,6 +28,11 @@ struct JSONResponseSerializer {
         }
     }
 }
+
+
+/******************************************************************************
+ * JSONDecoder: extension used to decode model of typr T provided from response data.
+ ******************************************************************************/
 
 extension JSONDecoder {
     
@@ -54,6 +62,7 @@ extension JSONDecoder {
     
 }
 
+/// Generic JSON parsing error
 enum JsonToModelConversionError: Error {
     case keyNotFound
     case valueNotFound
@@ -61,6 +70,7 @@ enum JsonToModelConversionError: Error {
     case dataCorrupted
 }
 
+/// Root lavel response from service
 struct TCResultData: Codable {
     var resultCode: Int
     var resultData: String
@@ -71,6 +81,7 @@ struct TCResultData: Codable {
     }
 }
 
+/// JSON result type after decoder call
 enum JSONResult<Value> {
     case failure(WebServiceError)
     case successWithResult(TCResultData)
@@ -79,6 +90,7 @@ enum JSONResult<Value> {
     
 }
 
+// generic WebServiceError for network lavel
 enum WebServiceError: Error {
     case APIError(Int, String)
     case parserError(Int?, String?)

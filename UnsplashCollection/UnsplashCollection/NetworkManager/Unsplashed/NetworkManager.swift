@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+/******************************************************************************
+ * NetworkManager: set authorization manager and handle network api to get refresh token
+ * from consumer id access by authorization manager. This class hold the referance of UnsplashAccessToken
+ * which is access by queue manager to fullfil the authorization request.
+ ******************************************************************************/
+
 class NetworkManager  {
     
     static let sharedManager = NetworkManager()

@@ -8,6 +8,10 @@
 
 import Foundation
 
+/******************************************************************************
+ * NetworkQueueManager: queue to manage all the async opearion. This will
+ * take care of cancel , resume the operation on conditional bases.
+ ******************************************************************************/
 class NetworkQueueManager: NSObject {
     
     static let shared = NetworkQueueManager()

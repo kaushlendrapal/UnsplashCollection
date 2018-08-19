@@ -8,11 +8,17 @@
 
 import UIKit
 
+/// view identifier for collection view cell, header, footers.
 fileprivate struct RegisteredCellClassIdentifier {
     static let unspleshCollectionImageCell:String = "UnspleshCollectionImageCell"
     static let unsplashCollectionHeaderView:String = "UnsplashCollectionHeaderView"
     static let unsplashCollectionFooterView:String = "UnsplashCollectionFooterView"
 }
+
+
+/******************************************************************************
+* UnsplashCollectionviewController: class used to hold and handle collection view component
+******************************************************************************/
 
 class UnsplashCollectionviewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

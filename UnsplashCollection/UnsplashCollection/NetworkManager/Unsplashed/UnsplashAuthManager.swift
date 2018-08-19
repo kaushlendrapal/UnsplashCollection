@@ -10,6 +10,11 @@ import UIKit
 import WebKit
 import Security
 
+/******************************************************************************
+ * UnsplashAuthManager: class have responsivility to launch webview connecting Screen to access the oauth2 token.
+ * also parse the consumer token on validating webview redirect url.
+ ******************************************************************************/
+
 public class UnsplashAuthManager {
     
     private static let host = "unsplash.com"

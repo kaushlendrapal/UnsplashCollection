@@ -8,6 +8,11 @@
 
 import Foundation
 
+/******************************************************************************
+* AsynchronousOperation: is a base class for all operation object. This will handle
+* the lifecycle for a operation.
+******************************************************************************/
+
 class AsynchronousOperation: Operation {
     
     var operationName: String = "NetworkOperation"

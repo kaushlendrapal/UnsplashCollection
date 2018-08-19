@@ -8,10 +8,17 @@
 
 import Foundation
 
+/******************************************************************************
+ * PhotoDetailVMInputDelegate: delegate to communicate the status for image source
+ ******************************************************************************/
 protocol PhotoDetailVMInputDelegate: class {
     func downloading(image:Data?, status:ImageDownloadState)
 }
 
+/******************************************************************************
+ * PhotoDetailViewModel: view model to provide image data to image detail view controller.
+ * hold the single responsibility to provide default image with download status.
+ ******************************************************************************/
 class PhotoDetailViewModel {
     
     var image:USImage

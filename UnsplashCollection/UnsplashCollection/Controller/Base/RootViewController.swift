@@ -8,6 +8,10 @@
 
 import UIKit
 
+/******************************************************************************
+ * RootViewController: app landing screen, provide navigation for demo task screen
+ ******************************************************************************/
+
 class RootViewController: UIViewController {
     
     override func viewDidLoad() {

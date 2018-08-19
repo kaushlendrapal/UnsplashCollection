@@ -8,6 +8,9 @@
 
 import UIKit
 
+/******************************************************************************
+ * UnsplashCollectionFooterView: collection view reusable footer
+ ******************************************************************************/
 class UnsplashCollectionFooterView: UICollectionReusableView {
 
     override func awakeFromNib() {

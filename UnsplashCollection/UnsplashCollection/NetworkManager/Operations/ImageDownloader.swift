@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
-enum ImageDownloadState {
-    case new, downloaded, failed
-}
-
+///URLTypes: decide the type of USImage utl links
 enum URLTypes : String {
     case full = "full"
     case regular = "regular"
     case small  = "small"
     case thumb  = "thumb"
 }
+
+/******************************************************************************
+ * ImageDownloader: Async operation for handling image download task. This class will
+ * encapsulate all the lower lavel detail of network call.
+ ******************************************************************************/
 
 class ImageDownloader: AsynchronousOperation {
     

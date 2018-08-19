@@ -8,6 +8,10 @@
 
 import UIKit
 
+/******************************************************************************
+ * UnspleshCollectionImageCell: collection view reusable cell
+ ******************************************************************************/
+
 class UnspleshCollectionImageCell: UICollectionViewCell, UnspleshImageVMInputDelegate {
     
     @IBOutlet weak var imageLabel: UILabel!

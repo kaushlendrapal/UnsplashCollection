@@ -13,7 +13,7 @@ protocol UnspleshCollectionVMInputDelegate: class {
     func handleCollectionViewReloadOnDataSourceUpdate()
 }
 
-
+/// Search criteria used for request builder
 struct SearchCriteria {
     var page:Int = Int(2)
     var perPage:Int
@@ -29,6 +29,10 @@ struct SearchCriteria {
     }
 }
 
+/******************************************************************************
+ * UnsplashCollectionViewViewModel: view model to provide images data source require for collectionview
+ * hold the single responsibility to handle network call.
+ ******************************************************************************/
 
 class UnsplashCollectionViewViewModel {
     var collectionDataSource:[USImage]?
