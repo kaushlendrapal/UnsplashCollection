@@ -52,7 +52,7 @@ struct ImageRequestBuilder : RequestHelper {
     }
     
     mutating func photoURLRequest(for image:USImage, imageURLType:URLTypes) {
-        var imageURL = URL(string: self.getImageURLString(for: imageURLType, image: image)!)
+        let imageURL = URL(string: self.getImageURLString(for: imageURLType, image: image)!)
         self.requestURL.url = imageURL
     }
     

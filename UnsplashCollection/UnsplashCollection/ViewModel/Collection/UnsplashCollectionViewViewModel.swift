@@ -35,13 +35,19 @@ class UnsplashCollectionViewViewModel {
     var networkManager = NetworkManager()
     weak var collectionVMDelegate:UnspleshCollectionVMInputDelegate?
     var searchCriteria = SearchCriteria(perPage: 100, orderBy: "popular", orientation: "squarish", searchText: "Nature")
+    fileprivate var networkQueueManager = NetworkQueueManager.shared
+    
+    convenience init(networkQueueManager:NetworkQueueManager) {
+        self.init()
+        self.networkQueueManager = networkQueueManager
+    }
     
     func fetchAllImages(searchCriteria:SearchCriteria)  {
         let requestParamaters:[String: Any] = ["page": Int(2), "per_page": searchCriteria.perPage, "order_by": searchCriteria.orderBy, "orientation": searchCriteria.orientation, "query": searchCriteria.searchText]
         var imageSearchRequest = ImageSearchRequestBuilder(accessToken: NetworkManager.sharedManager.unsplashToken)
         imageSearchRequest.photoListRequest(withQuery: requestParamaters)
 
-        NetworkQueueManager.shared.makeNetworkCall(requestHelper: imageSearchRequest, authRequired: false) { (jsonObject, error) in
+        networkQueueManager.makeNetworkCall(requestHelper: imageSearchRequest, authRequired: false) { (jsonObject, error) in
             let jsonResult = JSONResponseSerializer.handleJSONResponse(responseObject: jsonObject, httpError: error, ofResultType: [USImage].self)
             switch jsonResult {
             case JSONResult.failure(let genericError):

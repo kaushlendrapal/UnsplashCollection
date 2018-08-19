@@ -25,6 +25,7 @@ class NetworkManager  {
                 strongSelf.networkTask = nil
                 if let error = error {
                     requestCompletionBlock(nil, error)
+                    return
                 }
                 
                 if let responseData = data,

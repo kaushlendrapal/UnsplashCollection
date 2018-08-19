@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import os.log
+
+let Logger = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Unsplashed")
 
 struct Device {
     static let isIPhone              =  UIDevice.current.userInterfaceIdiom == .phone

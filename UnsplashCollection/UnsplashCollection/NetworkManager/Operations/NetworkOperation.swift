@@ -15,13 +15,18 @@ class NetworkOperation: AsynchronousOperation {
     
     var networkTask: URLSessionDataTask?
     var networkCallCompletionBlock: ((Any?, Error?) -> Void)
-    
+    fileprivate var session:URLSession = URLSession(configuration: URLSessionConfiguration.default)
     
     init(_ requestHealper: RequestHelper, requestCompletion:@escaping((Any?, Error?) -> Void)) {
         self.requestHelper = requestHealper
         self.networkCallCompletionBlock = requestCompletion
         super.init()
         self.operationName = "NetworkOperation"
+    }
+    
+    convenience init(_ requestHealper: RequestHelper,urlSession: URLSession, requestCompletion:@escaping((Any?, Error?) -> Void)) {
+        self.init(requestHealper, requestCompletion: requestCompletion)
+        self.session = urlSession
     }
     
     override func start() {
@@ -78,48 +83,51 @@ class NetworkOperation: AsynchronousOperation {
     func makeNetworkCall(requestObject: URLRequest, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             NSLog("\(String(describing: self.operationName)) makeNetworkCall method")
-            let session = URLSession(configuration: URLSessionConfiguration.default)
-            self.networkTask =  session.dataTask(with: requestObject) { [weak self] (data, response, error) in
+            self.networkTask =  self.session.dataTask(with: requestObject) { [weak self] (data, response, error) in
                 guard let strongSelf = self else { return }
                 strongSelf.networkTask = nil
-                
                 if let error = error {
                     requestCompletionBlock(nil, error)
+                    return
                 }
-                
-                if let responseData = data,
-                    let httpResponse = response as? HTTPURLResponse
-                {
-                    print("httpResponse status code \(httpResponse.statusCode)")
-                    switch(httpResponse.statusCode)
-                    {
-                    case 200:
-                        guard let JSONObject = try? JSONSerialization.jsonObject(with: responseData, options: [.allowFragments]) as? [String: AnyObject],
-                        let resultJSONData = JSONObject?["results"] as? [AnyObject]
-                        else {
-                            print("error trying to convert data to JSON")
-                            requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
-                            return
-                        }
-                        let cachedResponse = CachedURLResponse(response: httpResponse, data: responseData)
-                        strongSelf.cacheManager.updateCache(cachedResponse: cachedResponse, for: strongSelf.requestURL!)
-                        requestCompletionBlock(resultJSONData, nil)
-                        
-                    default:
-                        guard (try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject]) != nil else {
-                            print("error trying to convert data to JSON")
-                            requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
-                            return
-                        }
-                        print("GET resquest not successful. http status code \(httpResponse.statusCode)")
-                        requestCompletionBlock(nil, WebServiceError.APIError(httpResponse.statusCode, "Somthing wrong happened, please try after some time"))
-                    }
+                if let responseData = data, let httpResponse = response as? HTTPURLResponse {
+                    strongSelf.onSucessResponse(responseData: responseData, httpResponse: httpResponse, requestCompletionBlock: requestCompletionBlock)
                 } else {
                     print("not a valid http response")
                     requestCompletionBlock(nil, WebServiceError.APIError(400, "Bad request"))
                 }
             }
             self.networkTask?.resume()
+        }
+    }
+    
+    func onSucessResponse(responseData: Data, httpResponse: HTTPURLResponse, requestCompletionBlock:@escaping((Any?, Error?) -> Void)) -> Void {
+        
+        print("httpResponse status code \(httpResponse.statusCode)")
+        switch(httpResponse.statusCode)
+        {
+        case 200:
+            guard let JSONObject = try? JSONSerialization.jsonObject(with: responseData, options: [.allowFragments]) as? [String: AnyObject],
+                let resultJSONData = JSONObject?["results"] as? [AnyObject]
+                else {
+                    print("error trying to convert data to JSON")
+                    requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
+                    return
+            }
+            let cachedResponse = CachedURLResponse(response: httpResponse, data: responseData)
+            if let requesturl = self.requestURL {
+                self.cacheManager.updateCache(cachedResponse: cachedResponse, for: requesturl)
+            }
+            requestCompletionBlock(resultJSONData, nil)
+            
+        default:
+            guard (try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject]) != nil else {
+                print("error trying to convert data to JSON")
+                requestCompletionBlock(nil, WebServiceError.parserError(200, "response json invalid"))
+                return
+            }
+            print("GET resquest not successful. http status code \(httpResponse.statusCode)")
+            requestCompletionBlock(nil, WebServiceError.APIError(httpResponse.statusCode, "Somthing wrong happened, please try after some time"))
         }
     }
     
